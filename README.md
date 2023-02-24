@@ -1,5 +1,7 @@
 ## Simon
 
+Currently, the project is only html and css.
+
 This repository will hold my files for the mock Simon application that I will be creating.
 
 # Things I have learned
