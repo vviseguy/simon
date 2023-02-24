@@ -17,11 +17,10 @@ main, header, footer{
     background-color: #0000;
 }
 * {
-    
     box-sizing: border-box;
-    background-color: none;
     color: white;
     text-decoration: none;
+    cursor: default;
 }
 .glowey{
     display: inline-block;
@@ -264,3 +263,85 @@ tr:hover{
 
 /* PLAY */
 
+#play{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+#play p{
+    margin-bottom: 0;
+}
+#gameboard {
+    display: grid; 
+    width: min(45vw, 35vh);
+    height: min(45vw, 35vh);
+    grid-template-rows: auto auto; 
+    grid-template-columns: auto auto;
+    padding: 1%;
+    border-radius: 50%;
+    
+    border: 4px #ffffff33;
+    border-style: outset;
+    box-shadow: inset 0 0 7px 2px #fff4;
+
+    margin: 40px;
+}
+
+#gameboard > *{
+    box-sizing: border-box;
+    width: 90%;
+    height: 90%;
+    border: 5px #ffffff55;
+    border-style: outset;
+    border-top-left-radius:  100%;
+    border-bottom-right-radius:  -100%;
+    
+    box-shadow: inset 0 0 10px 10px #fff2;
+    margin: 5%;
+}
+#gameboard > *:hover {
+    box-shadow: inset 0 0 10px 10px #fff4;
+    cursor: pointer;
+}
+
+#tl-game-tile{ background: green;   transform: rotate(0deg);}
+#tr-game-tile{ background: red;     transform: rotate(90deg);}
+#bl-game-tile{ background: blue;    transform: rotate(270deg);}
+#br-game-tile{ background: yellow;  transform: rotate(180deg);}
+
+#score{
+    margin: 10px;
+    
+    width: min(300px, 40vw);
+    height: min-content;
+    display: grid;
+    grid-template-columns: auto 60% auto;
+}
+#score span{
+    font-size: 18px;
+}
+#score *{
+    background: black;
+    max-width: 95%;
+    margin: auto;
+
+}
+
+
+#score button{
+    display: inline;
+    width: fit-content;
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 2px 5px;
+    box-sizing: border-box;
+    margin: 7% 10%;
+    
+}
+
+#score button:hover{
+    cursor: pointer;
+    border-color:lightgray;
+    color:lightgray;
+}

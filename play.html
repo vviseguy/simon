@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,22 +19,22 @@
       </nav>
       <hr />
     </header>
-    
+
     <main id="play">
       <h1>Play Simon!</h1>
       <p>Playing as: Guest</p>
-      <div id="game-board" style = 
-       "display: grid; 
-        grid-template-rows: 40px 40px; 
-        grid-template-columns: 40px 40px;">
-          <button id="tl-game-tile" style = "background:green;"></button>
-          <button id="tr-game-tile" style = "background:red;"></button>
-          <button id="bl-game-tile" style = "background:blue;"></button>
-          <button id="br-game-tile" style = "background:yellow;"></button>
+      <div id="gameboard">
+        <button id="tl-game-tile"></button>
+        <button id="tr-game-tile"></button>
+        <button id="bl-game-tile"></button>
+        <button id="br-game-tile"></button>
       </div>
       <hr />
-      <span>Score</span> <input type="text" id="count" value="-" readonly="">
-      <button>Reset</button>
+      <div id="score">
+        <span>Score:</span>
+        <input type="text" id="count" value="-" readonly="true" />
+        <button type="button">Reset</button>
+      </div>
     </main>
 
     <footer>
