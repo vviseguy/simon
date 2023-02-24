@@ -1,8 +1,8 @@
 ## Simon
 
-Currently, the project is only html and css.
+This repository will hold my files for the mock Simon application that I will be creating as part of CS 260 Web Applications.
 
-This repository will hold my files for the mock Simon application that I will be creating.
+Currently, the project is only html and css.
 
 # Things I have learned
 
