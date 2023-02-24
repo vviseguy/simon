@@ -1,0 +1,151 @@
+html, body{
+    padding: 0;
+    margin: 0;
+}
+body {
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+}
+* {
+    
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+
+}
+
+/* HEADER */ 
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+sup{
+    font-size: small;
+}
+nav {
+    display: inline-grid;
+    grid-template-rows: auto;
+    grid-auto-flow: column;
+}
+header > h1 {
+    font-size: 70px;
+    margin: 3vh 0 0 0;
+}
+a{
+    margin: 0 3vw 0 3vw;
+}
+a:hover{
+    color:lightgray;
+}
+hr{
+    width: max(350px, 45vw);
+    margin:0
+}
+
+
+/* MAIN */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 15px;
+}
+#sign-in{
+    min-width: min(35vw, 250px);
+    min-height: max(30vh, 20px);
+    border: 2px solid white;
+    border-radius: 5%;
+    box-shadow: 0 -6vh 300vh 15px rgb(255, 255, 255);
+    
+    animation-name: fog;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    /* animation-timing-function: linear; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#sign-in > #title-box{
+    margin: auto 10%;
+    display: grid;
+    justify-content: left;
+    align-content: center;
+    background: none;
+    flex-grow: 1;
+}
+#sign-in > #title-box > h2 {
+    font-size: 25px;
+}
+#sign-in > input {
+    margin: 3px 0;
+    font-size: 16px;
+    width: 100%;
+    padding-left: 10%;
+}
+#sign-in > #button-box{
+    width: 100%;
+    flex-grow: 5;
+    display: flex;
+    background:none;
+    margin-top: 10%;
+
+}
+#sign-in > #button-box > button{
+    width: fit-content;
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 18px;
+
+    margin: 7% 10%;
+    
+    margin-top: auto;
+    margin-left: auto;
+}
+#sign-in > #button-box > button:hover{
+    cursor: pointer;
+    border-color:lightgray;
+    color:lightgray;
+}
+
+/** FOOTER **/
+footer{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+}
+
+footer > a{
+    background: none;
+    padding: 5px;
+}
+
+@keyframes fog {
+    0%      {box-shadow: 0 -6vh 25vh 0vh rgb(255, 255, 255);}
+    4%      {box-shadow: 0 -6vh 25vh -3vh rgb(255, 255, 255);}
+    10%     {box-shadow: 0 -6vh 25vh 0vh rgb(255, 255, 255);}
+    18%     {box-shadow: 0 -6vh 25vh -3vh rgb(255, 255, 255);}
+    28%     {box-shadow: 0 -6vh 25vh 0vh rgb(255, 255, 255);}
+    30%     {box-shadow: 0 -6vh 25vh 0vh rgb(255, 0, 0);}
+    35%     {box-shadow: 0 -6vh 25vh 0vh rgb(255, 0, 0);}
+    40%     {box-shadow: 0 -6vh 25vh 0vh rgb(255, 238, 0);}
+    47%     {box-shadow: 0 -6vh 25vh 0vh rgb(255, 238, 0);}
+    50%     {box-shadow: 0 -6vh 25vh 0vh rgb(0, 255, 0);}
+    57%     {box-shadow: 0 -6vh 25vh 0vh rgb(0, 255, 0);}
+    60%     {box-shadow: 0 -6vh 25vh 0vh rgb(83, 109, 255);}
+    67%     {box-shadow: 0 -6vh 25vh 0vh rgb(83, 109, 255);}
+    75%     {box-shadow: 0 -6vh 25vh 0vh rgb(255, 255, 255);}
+    82%     {box-shadow: 0 -6vh 25vh -3vh rgb(255, 255, 255);}
+    100%    {box-shadow: 0 -6vh 25vh 0vh rgb(255, 255, 255);}
+  }
