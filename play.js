@@ -135,7 +135,7 @@ const btnDescriptions = [
     }
   
     saveScore(score = this.sequence.length - 1) {
-      if (score < 0) return;
+      if (score < 0 || !this.isGameActive) return;
       const userName = this.getPlayerName();
       let scores = [];
       const scoresText = localStorage.getItem('highscores');
