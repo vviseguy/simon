@@ -333,7 +333,7 @@ tr:hover{
 #bl-game-tile{ background: blue;    transform: rotate(270deg);}
 #br-game-tile{ background: yellow;  transform: rotate(180deg);}
 
-#score{
+#score-dashboard{
     margin: 10px;
     
     width: min(300px, 40vw);
@@ -341,10 +341,10 @@ tr:hover{
     display: grid;
     grid-template-columns: auto 60% auto;
 }
-#score span{
+#score-dashboard span{
     font-size: 18px;
 }
-#score *{
+#score-dashboard *{
     background: black;
     max-width: 95%;
     margin: auto;
@@ -352,7 +352,7 @@ tr:hover{
 }
 
 
-#score button{
+#score-dashboard button{
     display: inline;
     width: fit-content;
     border: 2px solid white;
@@ -363,7 +363,7 @@ tr:hover{
     
 }
 
-#score button:hover{
+#score-dashboard button:hover{
     cursor: pointer;
     border-color:lightgray;
     color:lightgray;
