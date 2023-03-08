@@ -22,18 +22,18 @@
 
     <main id="play">
       <h1>Play Simon!</h1>
-      <p>Playing as: Guest</p>
+      <p>Playing as: <span class="player-name"></span></p>
       <div id="gameboard">
-        <button id="tl-game-tile"></button>
-        <button id="tr-game-tile"></button>
-        <button id="bl-game-tile"></button>
-        <button id="br-game-tile"></button>
+        <button id="green"  class="gametile" onclick="game.pressButton(this)"></button>
+        <button id="red"    class="gametile" onclick="game.pressButton(this)"></button>
+        <button id="yellow" class="gametile" onclick="game.pressButton(this)"></button>
+        <button id="blue"   class="gametile" onclick="game.pressButton(this)"></button>
       </div>
       <hr />
-      <div id="score">
+      <div id="score-dashboard">
         <span>Score:</span>
-        <input type="text" id="count" value="-" readonly="true" />
-        <button type="button">Reset</button>
+        <div type="text" id="score">--</div>
+        <button type="button" onclick="game.reset()">Reset</button>
       </div>
     </main>
 
@@ -41,5 +41,7 @@
       <hr />
       <a href="https://github.com/vviseguy/simon">GitHub</a>
     </footer>
+
+    <script src="play.js"></script>
   </body>
 </html>

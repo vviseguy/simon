@@ -70,7 +70,13 @@ hr{
 
 /* MAIN */
 #index *{
-    background-color: #000;
+    background-color: #000 !important;
+}
+input:-internal-autofill-selected {
+    appearance: initial;
+    background-image: none !important;
+    background-color: black !important;
+    color: initial !important;
 }
 #index {
     display: flex;
@@ -328,10 +334,10 @@ tr:hover{
     cursor: pointer;
 }
 
-#tl-game-tile{ background: green;   transform: rotate(0deg);}
-#tr-game-tile{ background: red;     transform: rotate(90deg);}
-#bl-game-tile{ background: blue;    transform: rotate(270deg);}
-#br-game-tile{ background: yellow;  transform: rotate(180deg);}
+#green.gametile{ background: green;   transform: rotate(0deg);}
+#red.gametile{ background: red;     transform: rotate(90deg);}
+#yellow.gametile{ background: yellow;    transform: rotate(270deg);}
+#blue.gametile{ background: blue;  transform: rotate(180deg);}
 
 #score-dashboard{
     margin: 10px;
@@ -368,3 +374,4 @@ tr:hover{
     border-color:lightgray;
     color:lightgray;
 }
+

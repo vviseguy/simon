@@ -48,7 +48,7 @@ const btnDescriptions = [
       this.playerPlaybackPos = 0;
       this.mistakeSound = loadSound('error.mp3');
   
-      document.querySelectorAll('.game-button').forEach((el, i) => {
+      document.querySelectorAll('.gametile').forEach((el, i) => {
         if (i < btnDescriptions.length) {
           this.buttons.set(el.id, new Button(btnDescriptions[i], el));
         }
@@ -60,7 +60,6 @@ const btnDescriptions = [
   
     async pressButton(button) {
       if (this.allowPlayer) {
-        this.allowPlayer = false;
         await this.buttons.get(button.id).press(1.0);
   
         if (this.sequence[this.playerPlaybackPos].el.id === button.id) {
@@ -75,7 +74,8 @@ const btnDescriptions = [
         } else {
           this.saveScore(this.sequence.length - 1);
           this.mistakeSound.play();
-          await this.buttonDance(2);
+          await this.buttonDance(1);
+          this.allowPlayer = false;
         }
       }
     }
@@ -85,7 +85,7 @@ const btnDescriptions = [
       this.playerPlaybackPos = 0;
       this.sequence = [];
       this.updateScore('--');
-      await this.buttonDance(1);
+      await this.buttonDance(2);
       this.addButton();
       await this.playSequence();
       this.allowPlayer = true;
@@ -113,7 +113,7 @@ const btnDescriptions = [
       scoreEl.textContent = score;
     }
   
-    async buttonDance(laps = 1) {
+    async buttonDance(laps = 2) {
       for (let step = 0; step < laps; step++) {
         for (const btn of this.buttons.values()) {
           await btn.press(0.0);
@@ -129,13 +129,13 @@ const btnDescriptions = [
     saveScore(score) {
       const userName = this.getPlayerName();
       let scores = [];
-      const scoresText = localStorage.getItem('scores');
+      const scoresText = localStorage.getItem('highscores');
       if (scoresText) {
         scores = JSON.parse(scoresText);
       }
       scores = this.updateScores(userName, score, scores);
   
-      localStorage.setItem('scores', JSON.stringify(scores));
+      localStorage.setItem('highscores', JSON.stringify(scores));
     }
   
     updateScores(userName, score, scores) {
