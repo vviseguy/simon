@@ -12,10 +12,10 @@
       <h1>Simon<sup>&reg;</sup></h1>
       <hr />
       <nav>
-        <a href="index.html">Home</a>
-        <a href="play.html">Play</a>
-        <a href="scores.html">Scores</a>
-        <a href="about.html">About</a>
+        <a href="index.html" onclick="game.saveScore()">Home</a>
+        <a>Play</a>
+        <a href="scores.html" onclick="game.saveScore()">Scores</a>
+        <a href="about.html" onclick="game.saveScore()">About</a>
       </nav>
       <hr />
     </header>
@@ -32,14 +32,13 @@
       <hr />
       <div id="score-dashboard">
         <span>Score:</span>
-        <div type="text" id="score">--</div>
-        <button type="button" onclick="game.reset()">Reset</button>
+        <div id="score">--</div>
       </div>
     </main>
 
     <footer>
       <hr />
-      <a href="https://github.com/vviseguy/simon">GitHub</a>
+      <a href="https://github.com/vviseguy/simon" onclick="game.saveScore()">GitHub</a>
     </footer>
 
     <script src="play.js"></script>

@@ -70,10 +70,10 @@ hr{
 
 /* MAIN */
 #index *{
-    background-color: #000 !important;
+    background-color: #000;
 }
 input:-internal-autofill-selected {
-    appearance: initial;
+
     background-image: none !important;
     background-color: black !important;
     color: initial !important;
@@ -268,7 +268,7 @@ table{
     width: 70vw;
 }
 table *{
-    padding: 3px 5px;
+    padding: 3px 0.7em;
     background-color:rgba(255, 255, 255, 0);
 }
 thead *{
@@ -282,9 +282,17 @@ tr:nth-child(even){
     background-color: rgba(255, 255, 255, 0.111);
 }
 
-tr *:nth-child(1), tr *:nth-child(3){
+tr *:nth-child(1){
+    padding: 3px 5px;
     text-align: right;
 }
+tr *:nth-child(4){
+    text-align: right;
+}
+tr *:nth-child(3){
+    text-align: center;
+}
+
 
 tr:hover{
     background-color:rgba(255, 255, 255, 0.2);
@@ -343,20 +351,25 @@ tr:hover{
     margin: 10px;
     
     width: min(300px, 40vw);
+    
+    font-family: monospace;
     height: min-content;
     display: grid;
-    grid-template-columns: auto 60% auto;
+    grid-template-columns: 55% 10%;
 }
 #score-dashboard span{
+    margin-right: 0;
     font-size: 18px;
 }
 #score-dashboard *{
     background: black;
     max-width: 95%;
     margin: auto;
-
 }
-
+#score{
+    margin-left: 0.5em;
+    font-size: 18px;
+}
 
 #score-dashboard button{
     display: inline;
@@ -366,6 +379,8 @@ tr:hover{
     padding: 2px 5px;
     box-sizing: border-box;
     margin: 7% 10%;
+    
+    margin-left: 0.5em;
     
 }
 

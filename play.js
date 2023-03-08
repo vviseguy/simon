@@ -40,6 +40,7 @@ const btnDescriptions = [
     sequence;
     playerPlaybackPos;
     mistakeSound;
+    isGameActive;
   
     constructor() {
       this.buttons = new Map();
@@ -47,6 +48,7 @@ const btnDescriptions = [
       this.sequence = [];
       this.playerPlaybackPos = 0;
       this.mistakeSound = loadSound('error.mp3');
+      this.isGameActive = false;
   
       document.querySelectorAll('.gametile').forEach((el, i) => {
         if (i < btnDescriptions.length) {
@@ -59,40 +61,46 @@ const btnDescriptions = [
     }
   
     async pressButton(button) {
-      if (this.allowPlayer) {
+      if (!this.isGameActive) {
+        await this.reset();
+      }
+      else if (this.allowPlayer) {
         await this.buttons.get(button.id).press(1.0);
-  
+        this.allowPlayer = false;
         if (this.sequence[this.playerPlaybackPos].el.id === button.id) {
           this.playerPlaybackPos++;
           if (this.playerPlaybackPos === this.sequence.length) {
             this.playerPlaybackPos = 0;
             this.addButton();
-            this.updateScore(this.sequence.length - 1);
+            this.updateScore();
             await this.playSequence();
           }
           this.allowPlayer = true;
         } else {
-          this.saveScore(this.sequence.length - 1);
+          this.saveScore();
           this.mistakeSound.play();
           await this.buttonDance(1);
-          this.allowPlayer = false;
+          await delay(500);
+          this.isGameActive = false;
         }
       }
     }
   
     async reset() {
+      this.isGameActive = true;
       this.allowPlayer = false;
       this.playerPlaybackPos = 0;
       this.sequence = [];
-      this.updateScore('--');
+      this.updateScore("--");
       await this.buttonDance(2);
       this.addButton();
+      this.updateScore();
       await this.playSequence();
       this.allowPlayer = true;
     }
   
     getPlayerName() {
-      return localStorage.getItem('userName') ?? 'Mystery player';
+      return localStorage.getItem('userName') ?? 'Guest';
     }
   
     async playSequence() {
@@ -108,9 +116,9 @@ const btnDescriptions = [
       this.sequence.push(btn);
     }
   
-    updateScore(score) {
+    updateScore(score = this.sequence.length - 1) {
       const scoreEl = document.querySelector('#score');
-      scoreEl.textContent = score;
+      scoreEl.textContent = (score < 10? "0":"")+score;
     }
   
     async buttonDance(laps = 2) {
@@ -126,7 +134,8 @@ const btnDescriptions = [
       return buttons[Math.floor(Math.random() * this.buttons.size)];
     }
   
-    saveScore(score) {
+    saveScore(score = this.sequence.length - 1) {
+      if (score < 0) return;
       const userName = this.getPlayerName();
       let scores = [];
       const scoresText = localStorage.getItem('highscores');
@@ -139,7 +148,7 @@ const btnDescriptions = [
     }
   
     updateScores(userName, score, scores) {
-      const date = new Date().toLocaleDateString();
+      const date = new Date().valueOf();
       const newScore = { name: userName, score: score, date: date };
   
       let found = false;
