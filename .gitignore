@@ -1,5 +1,7 @@
 .vscode/
 node_modules/
-deployfiles.sh
+deployFiles.sh
+deployService.sh
 makefile
 .gitignore
+dbConfig.json

@@ -133,20 +133,53 @@ const btnDescriptions = [
       let buttons = Array.from(this.buttons.values());
       return buttons[Math.floor(Math.random() * this.buttons.size)];
     }
-  
-    saveScore(score = this.sequence.length - 1) {
+    async saveScore(score = this.sequence.length - 1) {
       if (score < 0 || !this.isGameActive) return;
       const userName = this.getPlayerName();
+      const date = new Date().toLocaleDateString();
+      const newScore = { name: userName, score: score, date: date };
+  
+      try {
+        const response = await fetch('/api/score', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(newScore),
+        });
+  
+        // Store what the service gave us as the high scores
+        const scores = await response.json();
+        localStorage.setItem('highscores', JSON.stringify(scores));
+      } catch {
+        // If there was an error then just track scores locally
+        this.updateScoresLocal(newScore);
+      }
+    }
+    updateScoresLocal(newScore) {
       let scores = [];
       const scoresText = localStorage.getItem('highscores');
       if (scoresText) {
         scores = JSON.parse(scoresText);
       }
-      scores = this.updateScores(userName, score, scores);
+  
+      let found = false;
+      for (const [i, prevScore] of scores.entries()) {
+        if (newScore > prevScore.score) {
+          scores.splice(i, 0, newScore);
+          found = true;
+          break;
+        }
+      }
+  
+      if (!found) {
+        scores.push(newScore);
+      }
+  
+      if (scores.length > 10) {
+        scores.length = 10;
+      }
   
       localStorage.setItem('highscores', JSON.stringify(scores));
     }
-  
     updateScores(userName, score, scores) {
       const date = new Date().valueOf();
       const newScore = { name: userName, score: score, date: date };
