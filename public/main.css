@@ -69,24 +69,8 @@ hr{
 
 
 /* MAIN */
-#index *{
+#index > *{
     background-color: #000;
-}
-input:-internal-autofill-selected {
-
-    background-image: none !important;
-    background-color: black !important;
-    color: initial !important;
-}
-#index {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    margin: 15px;
-}
-#sign-in{
     min-width: min(35vw, 250px);
     min-height: max(30vh, 20px);
     border: 2px solid white;
@@ -102,7 +86,21 @@ input:-internal-autofill-selected {
     flex-direction: column;
     justify-content: center;
 }
-#sign-in > #title-box{
+input:-internal-autofill-selected {
+
+    background-image: none !important;
+    background-color: black !important;
+    color: initial !important;
+}
+#index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 15px;
+}
+#index > * > .title-box{
     margin: auto 10%;
     display: grid;
     justify-content: left;
@@ -110,16 +108,20 @@ input:-internal-autofill-selected {
     background: none;
     flex-grow: 1;
 }
-#sign-in > #title-box > h2 {
+#index > * > .title-box > h2 {
     font-size: 25px;
 }
-#sign-in > input {
+#index > * > input {
+    
+    background-image: none !important;
+    background: black !important;
+    
     margin: 3px 0;
     font-size: 16px;
     width: 100%;
     padding-left: 10%;
 }
-#sign-in > #button-box{
+#index > * > .button-box{
     width: 100%;
     flex-grow: 5;
     display: flex;
@@ -127,7 +129,9 @@ input:-internal-autofill-selected {
     margin-top: 10%;
 
 }
-#sign-in > #button-box > button{
+#index > * > .button-box > button{
+    
+    background-color: #000;
     width: fit-content;
     border: 2px solid white;
     border-radius: 4px;
@@ -139,7 +143,7 @@ input:-internal-autofill-selected {
     margin-top: auto;
     margin-left: auto;
 }
-#sign-in > #button-box > button:hover{
+#index > * > .button-box > button:hover{
     cursor: pointer;
     border-color:lightgray;
     color:lightgray;
@@ -153,7 +157,7 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: none;
+    background: black;
 }
 
 footer > a{

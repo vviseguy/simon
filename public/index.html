@@ -14,7 +14,6 @@
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
     crossorigin="anonymous"
     />
-    <script src="login.js"></script>
     <link rel="stylesheet" href="main.css"/>
   </head>
   <body>
@@ -31,21 +30,34 @@
     </header>
 
     <main id="index">
-      <form id="sign-in" method="get" action="play.html">
-        <div id="title-box">
+      <div id="signinControls">
+        <div class="title-box">
           <h2>Log in</h2>
         </div>
         <input id="username" type="text" placeholder="Username">
         <input id="password" type="password" placeholder="Password">
-        <div id="button-box">
-          <button type="submit" onclick="login()">Sign in</button>
+        <div class="button-box">
+          <button type="submit" onclick="createUser('')">Create Acc</button>
+          <button type="submit" onclick="loginUser('')">Sign in</button>
         </div>
-      </form>
+      </div>
+      <div id="playControls">
+        <div class="title-box">
+          <p>Playing as: <span id="playerName"></span></p>
+        </div>
+        <div class="button-box">
+          <button type="submit" onclick="play()">Play</button>
+          <button type="submit" onclick="logout()">Log out</button>
+        </div>
+      </div>
+      
     </main>
 
     <footer>
       <hr />
       <a href="https://github.com/vviseguy/simon">🔱 GitHub 🔱</a>
     </footer>
+    
+    <script src="login.js"></script>
   </body>
 </html>
