@@ -19,21 +19,21 @@ const scoreCollection = db.collection('score');
 });
 
 function getUser(email) {
-  return userCollection.findOne({ email: email });
+  return userCollection.findOne({ email: email.toString() });
 }
 
 function getUserByToken(token) {
-  return userCollection.findOne({ token: token });
+  return userCollection.findOne({ token: token.toString() });
 }
 
 async function createUser(email, password) {
   // Hash the password before we insert it into the database
-  const passwordHash = await bcrypt.hash(password, 10);
+  const passwordHash = await bcrypt.hash(password.toString(), 10);
 
   const user = {
-    email: email,
-    password: passwordHash,
-    token: uuid.v4(),
+    email: email.toString(),
+    password: passwordHash.toString(),
+    token: uuid.v4().toString(),
   };
   await userCollection.insertOne(user);
 
@@ -41,7 +41,7 @@ async function createUser(email, password) {
 }
 
 function addScore(score) {
-  scoreCollection.insertOne(score);
+  scoreCollection.insertOne(Number.isInteger(score)?score:-1);
 }
 
 function getHighScores() {

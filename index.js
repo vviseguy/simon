@@ -79,7 +79,7 @@ apiRouter.delete('/auth/logout', (_req, res) => {
 apiRouter.get('/user/:email', async (req, res) => {
   const user = await DB.getUser(req.params.email);
   if (user) {
-    const token = req?.cookies.token;
+    const token = req.cookies.token;
     res.send({ email: user.email, authenticated: token === user.token });
     return;
   }
